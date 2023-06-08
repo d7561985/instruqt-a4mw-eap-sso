@@ -1,0 +1,12 @@
+plugin: azure.azcollection.azure_rm
+include_vm_resource_groups:
+  - ansiblefest-eastus-rg
+  - ansiblefest-uksouth-rg
+auth_source: auto
+leading_separator: no
+plain_host_names: yes
+keyed_groups:
+ - key: tags.Role
+ - key: tags.Site
+ - key: tags.Region
+ - key: tags.Cloud

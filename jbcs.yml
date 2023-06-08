@@ -1,0 +1,26 @@
+---
+- name: Playbook for loadbalancer Hosts
+  hosts: jbcs
+  become: true
+  roles:
+    - redhat.jbcs.jbcs
+  pre_tasks:
+    - name: Set httpd_can_network_connect flag on and keep it persistent across reboots
+      ansible.posix.seboolean:
+        name: httpd_can_network_connect
+        state: yes
+        persistent: yes
+    - name: Set nid_enabled flag on and keep it persistent across reboots
+      ansible.posix.seboolean:
+        name: nis_enabled
+        state: yes
+        persistent: yes
+    - name: Allow reverse proxy to work
+      ansible.builtin.command: /usr/sbin/setsebool -P httpd_can_network_connect 1
+      changed_when: False
+    - name: Add reverse proxied port to selinux
+      ansible.builtin.command: semanage port -m -t http_port_t -p tcp 8080
+      changed_when: False
+    - name: Add reverse proxied port to selinux
+      ansible.builtin.command: semanage port -m -t http_port_t -p tcp 8009
+      changed_when: False
