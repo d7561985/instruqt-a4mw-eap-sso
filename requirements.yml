@@ -3,7 +3,7 @@ collections:
   - name: redhat.runtimes_common
   - name: redhat.sso
   - name: redhat.eap
-  - name: redhat.jbcs
+  - name: middleware_automation.jbcs
   - name: community.general
   - name: ansible.netcommon
   - name: ansible.posix

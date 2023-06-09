@@ -3,9 +3,9 @@
   hosts: jbcs
   become: true
   collections:
-    - redhat.jbcs
+    - middleware_automation.jbcs
   roles:
-    - redhat.jbcs.jbcs
+    - middleware_automation.jbcs.jbcs
   pre_tasks:
     - name: Set httpd_can_network_connect flag on and keep it persistent across reboots
       ansible.posix.seboolean:
