@@ -2,6 +2,8 @@
 - name: Playbook for loadbalancer Hosts
   hosts: jbcs
   become: true
+  collections:
+    - redhat.jbcs
   roles:
     - redhat.jbcs.jbcs
   pre_tasks:
