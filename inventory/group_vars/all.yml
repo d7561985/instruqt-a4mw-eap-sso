@@ -1,7 +1,7 @@
 ---
 jvm_package: java-11-openjdk-headless
 domain_name: '.internal.ansiblemiddleware.com'
-external_domain_name: 'eap-sso.lab'
+external_domain_name: ''
 site_jdbc_url: "jdbc:postgresql://jbcs-eap:5432"
 sso_frontend_url: "https://{{ external_domain_name }}/auth/"
 sso_admin_user: admin

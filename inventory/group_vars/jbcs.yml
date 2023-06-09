@@ -1,3 +1,4 @@
 ---
 jbcs_external_domain_name: "{{ external_domain_name }}"
 jbcs_mod_cluster_enable: True
+jbcs_offline_install: False
