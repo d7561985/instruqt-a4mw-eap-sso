@@ -4,7 +4,6 @@ collections:
   - name: redhat.sso
   - name: redhat.eap
   - name: middleware_automation.jbcs
-  - name: community.general
   - name: ansible.netcommon
   - name: ansible.posix
   
