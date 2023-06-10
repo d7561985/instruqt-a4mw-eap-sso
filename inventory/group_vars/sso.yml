@@ -13,5 +13,6 @@ sso_db_user: keycloak-user
 sso_db_pass: keycloak-pass
 sso_db_background_validate_on_match: True
 sso_db_valid_conn_sql: 'SELECT 1'
+sso_jgroups_subnet: "{{ (ansible_default_ipv4.address | default(ansible_all_ipv4_addresses[0])) + '/24' }}"
 
 admin_pass: "redhat1!but12long"

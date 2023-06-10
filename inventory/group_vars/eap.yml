@@ -1,6 +1,6 @@
 ---
 eap_config_base: standalone-ha.xml
-eap_offline_install: True
+eap_offline_install: False
 eap_enable_yml_config: True
 eap_statistics_enabled: True
 eap_apply_cp: True
@@ -10,7 +10,7 @@ eap_bind_addr_management: 0.0.0.0
 eap_instance_name: "{{ inventory_hostname }}"
 eap_elytron_adapter: True
 eap_yml_configs: [ eap_ymlconfig.yml.j2 ]
-eap_patch_version: 7.4.9
+#eap_patch_version: 7.4.9
 
 sso_admin_password: "redhat1!but12long"
 
