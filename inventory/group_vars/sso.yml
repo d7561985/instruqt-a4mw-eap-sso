@@ -4,7 +4,7 @@ sso_remote_cache_enabled: False
 sso_configure_firewalld: True
 sso_offline_install: False
 sso_management_port_bind_address: 0.0.0.0
-
+sso_http_port: 8081
 sso_modcluster_url: "jbcs-eap"
 
 sso_jdbc_engine: postgres

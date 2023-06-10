@@ -23,8 +23,6 @@
         - 8009/tcp
         - 8080/tcp
         - 9990/tcp
-        - 7600/tcp
-        - 7601/tcp
     # - block:
     #   - name: Get keycloak auth token
     #     ansible.builtin.uri:
@@ -63,8 +61,6 @@
 - name: Playbook for EAP Hosts config and app deployment
   hosts: eap
   become: yes
-  collections:
-    - redhat.eap
   serial: 1
   tasks:
     - name: Verify service is started

@@ -6,7 +6,8 @@
     - role: redhat.sso.sso
       sso_admin_password: "{{ admin_pass }}"
   post_tasks:
-    - include_role:
+    - name: "Run the realm configuration"
+      ansible.builtin.include_role:
         name: sso_realm
         apply:
           delegate_to: "{{ ansible_play_hosts | first }}"
