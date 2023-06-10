@@ -1,0 +1,51 @@
+wildfly-configuration:
+  system-property:
+    JBOSS_ID:
+      value: {{ inventory_hostname }}
+  socket-binding-group:
+    standard-sockets:
+      remote-destination-outbound-socket-binding:
+        loadbalancer:
+          host: jbcs-eap
+          port: 6666
+  subsystem:
+    modcluster:
+      proxy:
+        default:
+          proxies:
+            - loadbalancer
+          advertise: false
+          listener: ajp
+    transactions:
+      node-identifier: {{ instance_name | default(inventory_hostname) }}
+    datasources:
+      jdbc-driver:
+        mariadb:
+          driver-name: mariadb
+          driver-xa-datasource-class-name: org.mariadb.jdbc.MySQLDataSource
+          driver-module-name: org.mariadb
+      data-source:
+        AddressBookDS:
+          enabled: true
+          jndi-name: java:jboss/datasources/AddressbookDS
+          jta: true
+          max-pool-size: 20
+          min-pool-size: 2
+          connection-url: "{{ addressbook_jdbc_url }}"
+          driver-name: postgresql
+          user-name: addressbook
+          password: addressbookpass
+          check-valid-connection-sql: SELECT 1
+          validate-on-match: true
+          background-validation: false
+    keycloak:
+      secure-deployment:
+        addressbook.war:
+          realm: addressbook
+          resource: addressbook
+          auth-server-url: {{ sso_frontend_url }}/
+          ssl-required: external
+          disable-trust-manager: true
+          use-resource-role-mappings: true
+          verify-token-audience: true
+          public-client: true
