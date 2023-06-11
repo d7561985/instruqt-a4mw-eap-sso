@@ -1,7 +1,0 @@
----
-- name: Playbook for rhsso Hosts
-  hosts: sso
-  become: true
-  roles:
-    - role: redhat.sso.sso
-      sso_admin_password: "{{ admin_pass }}"
