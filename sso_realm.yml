@@ -5,7 +5,7 @@
   tasks:
     - name: "Run the realm configuration"
       ansible.builtin.include_role:
-        name: sso_realm
+        name: redhat.sso.sso_realm
         apply:
           delegate_to: "{{ ansible_play_hosts | first }}"
           run_once: true

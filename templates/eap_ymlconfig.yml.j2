@@ -20,10 +20,10 @@ wildfly-configuration:
       node-identifier: {{ instance_name | default(inventory_hostname) }}
     datasources:
       jdbc-driver:
-        mariadb:
-          driver-name: mariadb
-          driver-xa-datasource-class-name: org.mariadb.jdbc.MySQLDataSource
-          driver-module-name: org.mariadb
+        postgresql:
+          driver-name: postgresql
+          driver-xa-datasource-class-name: org.postgresql.xa.PGXADataSource
+          driver-module-name: org.postgresql
       data-source:
         AddressBookDS:
           enabled: true
