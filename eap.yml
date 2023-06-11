@@ -44,7 +44,7 @@
     - name: "Download demo app to deploy from {{ app_url }} into deployments"
       ansible.builtin.get_url:
         url: "{{ app_url }}"
-        dest: "{{ eap.home }}/standalone/deployments/addressbook.war"
+        dest: "/opt/jboss_eap/jboss-eap-7.4/standalone/deployments/addressbook.war"
         owner: eap
         group: eap
         mode: 0644
