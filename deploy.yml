@@ -5,4 +5,6 @@
 
 - import_playbook: sso.yml
 
+- import_playbook: sso_realm.yml
+
 - import_playbook: eap.yml

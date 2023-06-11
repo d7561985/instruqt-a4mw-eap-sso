@@ -1,0 +1,46 @@
+---
+- name: Playbook for rhsso Hosts
+  hosts: sso
+  become: true
+  tasks:
+    - name: "Run the realm configuration"
+      ansible.builtin.include_role:
+        name: sso_realm
+        apply:
+          delegate_to: "{{ ansible_play_hosts | first }}"
+          run_once: true
+      vars:
+        sso_admin_password: "{{ admin_pass }}"
+        sso_realm: addressbook
+        sso_clients:
+          - name: addressbook
+            client_id: addressbook
+            roles:
+              - admin_role
+              - user_role
+            realm: addressbook
+            public_client: true
+            web_origins: '+'
+            users:
+              - username: administrator
+                email: ansible-middleware-core@redhat.com
+                firstName: Admin
+                lastName: Admin
+                password: password
+                client_roles:
+                  - client: addressbook
+                    role: admin_role
+                    realm: addressbook
+                  - client: addressbook
+                    role: user_role
+                    realm: addressbook
+              - username: user
+                email: ggraziol@redhat.com
+                firstName: Guido
+                lastName: Grazioli
+                password: password
+                client_roles:
+                  - client: addressbook
+                    role: user_role
+                    realm: addressbook
+  
