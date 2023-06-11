@@ -65,7 +65,7 @@
   tasks:
     - name: Verify service is started
       ansible.builtin.service:
-        name: eap
+        name: jbcs-eap
         state: started
       throttle: 1
     - name: Verify management port is accessible
