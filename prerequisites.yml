@@ -17,20 +17,6 @@
           - python3-policycoreutils
           - policycoreutils-python-utils
           - "{{ jvm_package }}"
-    - name: "Get FQDN"
-      ansible.builtin.command: "setenforce Permissive"
-      become: true
-      changed_when: false
-    - name: "Get FQDN"
-      ansible.builtin.command: "hostname --fqdn"
-      become: true
-      register: current_fqdn
-      changed_when: false
-    - name: "Set FQDN"
-      ansible.builtin.command: "hostnamectl set-hostname --static {{ inventory_hostname }}{{ domain_name }}"
-      become: true
-      when: current_fqdn.stdout != (inventory_hostname + domain_name)
-      changed_when: true
     - name: "Install certificates"
       ansible.builtin.include_role:
         name: certificates
