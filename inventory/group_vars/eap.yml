@@ -14,5 +14,6 @@ eap_yml_configs: [ eap_ymlconfig.yml.j2 ]
 
 sso_admin_password: "redhat1!but12long"
 
-app_url: https://github.com/ansible-middleware/addressbook/releases/download/1.0.7/addressbook.war
 addressbook_jdbc_url: "{{ site_jdbc_url }}/addressbook"
+
+app_url: https://github.com/ansible-middleware/addressbook/releases/download/1.0.7/addressbook.war

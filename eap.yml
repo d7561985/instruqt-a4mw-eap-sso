@@ -23,40 +23,6 @@
         - 8009/tcp
         - 8080/tcp
         - 9990/tcp
-    # - block:
-    #   - name: Get keycloak auth token
-    #     ansible.builtin.uri:
-    #       url: "{{ sso_frontend_url }}/realms/master/protocol/openid-connect/token"
-    #       method: POST
-    #       body: "client_id=admin-cli&username={{ sso_admin_user }}&password={{ sso_admin_password }}&grant_type=password"
-    #       validate_certs: no
-    #     register: keycloak_auth_response
-    #     until: keycloak_auth_response.status == 200
-    #     retries: 5
-    #     delay: 2
-    #     run_once: true
-    #   - name: "Get Clients"
-    #     ansible.builtin.uri:
-    #       url: "{{ sso_frontend_url }}/admin/realms/addressbook/clients"
-    #       method: GET
-    #       status_code:
-    #         - 200
-    #       headers:
-    #         Accept: "application/json"
-    #         Authorization: "Bearer {{ keycloak_auth_response.json.access_token }}"
-    #     register: keycloak_client_response
-    #     run_once: true
-    #   - name: "Get Client Secret"
-    #     ansible.builtin.uri:
-    #       url: "{{ sso_frontend_url }}/admin/realms/addressbook/clients/{{ (keycloak_client_response.json | selectattr('clientId', 'equalto', 'addressbook') | list | first).id }}/client-secret"
-    #       method: GET
-    #       status_code:
-    #         - 200
-    #       headers:
-    #         Accept: "application/json"
-    #         Authorization: "Bearer {{ keycloak_auth_response.json.access_token }}"
-    #     register: keycloak_client_secret_response
-    #     run_once: true
 
 - name: Playbook for EAP Hosts config and app deployment
   hosts: eap
@@ -78,7 +44,7 @@
     - name: "Download demo app to deploy from {{ app_url }} into deployments"
       ansible.builtin.get_url:
         url: "{{ app_url }}"
-        dest: "{{ eap.home }}/standalone/deployments/"
+        dest: "{{ eap.home }}/standalone/deployments/addressbook.war"
         owner: eap
         group: eap
         mode: 0644
