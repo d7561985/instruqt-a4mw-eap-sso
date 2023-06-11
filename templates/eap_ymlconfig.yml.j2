@@ -38,14 +38,3 @@ wildfly-configuration:
           check-valid-connection-sql: SELECT 1
           validate-on-match: true
           background-validation: false
-    keycloak:
-      secure-deployment:
-        addressbook.war:
-          realm: addressbook
-          resource: addressbook
-          auth-server-url: {{ sso_frontend_url }}/
-          ssl-required: external
-          disable-trust-manager: true
-          use-resource-role-mappings: true
-          verify-token-audience: true
-          public-client: true
