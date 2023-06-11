@@ -10,10 +10,9 @@ eap_bind_addr_management: 0.0.0.0
 eap_instance_name: "{{ inventory_hostname }}"
 eap_elytron_adapter: True
 eap_yml_configs: [ eap_ymlconfig.yml.j2 ]
-#eap_patch_version: 7.4.9
 
 sso_admin_password: "redhat1!but12long"
 
 addressbook_jdbc_url: "{{ site_jdbc_url }}/addressbook"
 
-app_url: https://github.com/guidograzioli/keycloak/raw/instruqt/addressbook-1.0.0.war
+app_url: https://github.com/guidograzioli/keycloak/raw/instruqt/addressbook-1.1.0.war
