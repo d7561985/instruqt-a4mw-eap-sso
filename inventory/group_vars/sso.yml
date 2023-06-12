@@ -16,3 +16,36 @@ sso_db_valid_conn_sql: 'SELECT 1'
 sso_jgroups_subnet: "{{ (ansible_default_ipv4.address | default(ansible_all_ipv4_addresses[0])) + '/24' }}"
 
 admin_pass: "redhat1!but12long"
+
+realm_clients:
+  - name: addressbook
+    client_id: addressbook
+    roles:
+      - admin_role
+      - user_role
+    realm: addressbook
+    public_client: true
+    web_origins: '+'
+    redirect_uris: '*'
+    users:
+      - username: administrator
+        email: ansible-middleware-core@redhat.com
+        firstName: Admin
+        lastName: Admin
+        password: password
+        client_roles:
+          - client: addressbook
+            role: admin_role
+            realm: addressbook
+          - client: addressbook
+            role: user_role
+            realm: addressbook
+      - username: user
+        email: ggraziol@redhat.com
+        firstName: Guido
+        lastName: Grazioli
+        password: password
+        client_roles:
+          - client: addressbook
+            role: user_role
+            realm: addressbook
