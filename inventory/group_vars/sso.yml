@@ -41,7 +41,7 @@ realm_clients:
             role: user_role
             realm: addressbook
       - username: user
-        email: ggraziol@redhat.com
+        email: user@example.com
         firstName: Guido
         lastName: Grazioli
         password: password
